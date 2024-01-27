@@ -1,0 +1,50 @@
+<%- include("partials/header.ejs") %>
+
+
+    <header>
+        <h1 class="heading">Check Your IP address!</h1>
+    </header>
+    <form action="/" id="ipAddress" class="ipAddress" method="POST">
+        <input type="text"  name="ipAddress" placeholder="Enter your IP address..." >
+        <button type="submit" class="form-submit">GO!</button>
+    </form>
+
+    <%if (locals.data) {%>
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Your Information...</h5>
+          <ul class="card-text">
+            <li>IP Address: <%= data.ip %></li>
+            <li>Type: <%= data.type %></li>
+            <li>Continent Code: <%= data.continent_code %></li>
+            <li>Continent Name: <%= data.continent_name %></li>
+            <li>Country Code: <%= data.country_code %></li>
+            <li>Country Name: <%= data.country_name %></li>
+            <li>Region Code: <%= data.region_code %></li>
+            <li>Region Name: <%= data.region_name %></li>
+            <li>City: <%= data.city %></li>
+            <li>Zip: <%= data.zip %></li>
+            <li>Latitude: <%= data.latitude %></li>
+            <li>Longitude: <%= data.longitude %></li>
+            <li>Location <ul>
+                <li>Geoname ID: <%= data.location.geoname_id %></li>
+                <li>Capital: <%= data.location.capital %></li>
+                <li>Languages: <%= data.location.languages %></li>
+                <li>Country Flag: <%= data.location.country_flag %></li>
+                <li>Country Flag Emoji: <%= data.location.country_flag_emoji %></li>
+                <li>Country Flag Emoji Unicode: <%= data.location.country_flag_emoji_unicode %></li>
+                <li>Calling Code: <%= data.location.calling_code %></li>
+                <li>Is Eu? <%= data.location.is_eu %></li>
+              </ul>
+            </ul>
+        </div>
+      </div>
+      <% } %>
+
+    <%if (locals.error)  {%>
+    <div id="tag-error" class="tag-error">
+       <%= error %>
+    </div>
+    <% } %>
+
+    <%- include("partials/footer.ejs") %>

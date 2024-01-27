@@ -1,12 +1,15 @@
 import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
+import dotenv from "dotenv";
 
 const app = express();
 const port = 3000;
 
 app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({extended: true }));
+
+dotenv.config();
 
 app.get("/", (req, res) => {
     res.render("index.ejs");
